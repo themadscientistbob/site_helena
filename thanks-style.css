@@ -1,0 +1,137 @@
+:root {
+    --ink: #241220;
+    --ink-soft: #33172b;
+    --paper: #fcece1;
+    --paper-shadow: rgba(20, 6, 15, 0.35);
+    --rose: #e88aa0;
+    --rose-deep: #c65d74;
+    --gold: #d9a857;
+    --text: #3b2430;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: radial-gradient(ellipse at top, var(--ink-soft), var(--ink) 60%);
+    color: var(--paper);
+    font-family: 'Lora', serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    position: relative;
+}
+
+main {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 88px 24px 96px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow {
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.7rem;
+    color: var(--rose);
+    margin: 0 0 10px;
+}
+
+.titulo {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    margin: 0 0 32px;
+}
+
+.polaroid {
+    margin: 0 auto 32px;
+    background: #fdf9f4;
+    padding: 10px 10px 30px;
+    width: 68%;
+    max-width: 260px;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.4);
+    transform: rotate(3deg);
+}
+
+.polaroid img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.carta {
+    background: var(--paper);
+    color: var(--text);
+    text-align: left;
+    border-radius: 4px 18px 4px 18px;
+    padding: 32px 36px;
+    box-shadow: 0 24px 45px var(--paper-shadow);
+}
+
+.carta p {
+    margin: 0 0 16px;
+    font-size: 1.05rem;
+}
+
+.assinatura {
+    margin: 8px 0 0 !important;
+    font-family: 'Caveat', cursive;
+    font-size: 1.7rem;
+    color: var(--rose-deep);
+}
+
+.confete {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.coracao {
+    position: absolute;
+    top: -10%;
+    font-size: 1.4rem;
+    color: var(--rose);
+    opacity: 0.85;
+    animation: cair linear forwards;
+}
+
+@keyframes cair {
+    to {
+        transform: translateY(115vh) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visivel {
+    opacity: 1;
+    transform: rotate(3deg);
+}
+
+.titulo.visivel,
+.carta.visivel,
+.eyebrow.visivel {
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1 !important;
+        transition: none !important;
+    }
+    .coracao {
+        display: none;
+    }
+}
